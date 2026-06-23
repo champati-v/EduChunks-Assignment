@@ -7,7 +7,7 @@ const strikeBtn = document.getElementById('strikeBtn');
 function updateButtonStates() {
     const isBold = document.queryCommandState('bold');
     const isItalic = document.queryCommandState('italic');
-    const isStrike = document.queryCommandState('strikethrough');
+    const isStrike = document.queryCommandState('strikeThrough');
 
     boldBtn.classList.toggle('active', isBold);
     italicBtn.classList.toggle('active', isItalic);
@@ -33,16 +33,16 @@ italicBtn.addEventListener('click', (e) => {
 // Strikethrough button click handler
 strikeBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    document.execCommand('strikethrough', false, null);
+    document.execCommand('strikeThrough', false, null);
     editor.focus();
     updateButtonStates();
 });
 
 // Update button states on text selection or cursor movement
-editor.addEventListener('keyup', updateButtonStates);
-editor.addEventListener('mouseup', updateButtonStates);
-editor.addEventListener('click', updateButtonStates);
-editor.addEventListener('selectionchange', updateButtonStates);
+document.addEventListener('keyup', updateButtonStates);
+document.addEventListener('mouseup', updateButtonStates);
+document.addEventListener('click', updateButtonStates);
+document.addEventListener('selectionchange', updateButtonStates);
 
 // Keyboard shortcuts
 editor.addEventListener('keydown', (e) => {
@@ -55,7 +55,7 @@ editor.addEventListener('keydown', (e) => {
             e.preventDefault();
             document.execCommand('italic', false, null);
             updateButtonStates();
-        }
+        } 
     }
 });
 
