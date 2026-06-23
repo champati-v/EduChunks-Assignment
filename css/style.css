@@ -11,6 +11,7 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .page-intro {
@@ -45,6 +46,7 @@ body {
 .main-container {
   width: 100%;
   flex: 1;
+  min-height: 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr) minmax(190px, 0.38fr);
@@ -63,6 +65,7 @@ body {
   display: block;
   border-radius: 16px;
   overflow: hidden;
+  min-height: 0;
   background: #0d0d0d;
   box-shadow:
     0 14px 36px rgba(0, 0, 0, 0.35),
@@ -83,6 +86,7 @@ body {
   grid-column: 1 / -1;
   grid-row: 2;
   min-width: 0;
+  min-height: 0;
   border-radius: 16px;
   background: #121212;
   border: 1px solid rgba(255, 255, 255, 0.06);
