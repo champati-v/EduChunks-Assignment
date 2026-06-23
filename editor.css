@@ -79,6 +79,20 @@ body {
     word-wrap: break-word;
 }
 
+.sync-status {
+    background: #4caf50;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sync-status.show {
+    opacity: 1;
+}
+
 .editor:focus {
     outline: none;
 }
