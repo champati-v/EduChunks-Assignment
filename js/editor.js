@@ -18,8 +18,11 @@ function updateButtonStates() {
     strikeBtn.classList.toggle('active', isStrike);
 }
 
+let ignoreNextInputEvent = false;
+
 function executeCommand(command) {
     const prevHTML = editor.innerHTML;
+    ignoreNextInputEvent = true;
     document.execCommand(command, false, null);
     const newHTML = editor.innerHTML;
 
@@ -84,8 +87,27 @@ function sendMessageToHost(message) {
         },
         TRUSTED_ORIGIN
     );
-    console.count("EDITOR SENT");
 }
+
+let isRemoteUpdate = false;
+let debounceTimer = null;
+
+editor.addEventListener("input", () => {
+    if(ignoreNextInputEvent) {
+        ignoreNextInputEvent = false;
+        return;
+    }
+    
+    if (isRemoteUpdate) {
+        return;
+    }
+    clearTimeout(debounceTimer);
+
+    debounceTimer = setTimeout(() => {
+        sendMessageToHost("Text Input Change");
+    }, 300);
+})
+
 
 window.addEventListener("message", (event) => {
     if(event.data && event.data.type != "FORMAT_SYNC") {
@@ -103,6 +125,21 @@ window.addEventListener("message", (event) => {
 
     editor.innerHTML = event.data.html;
     showSyncIndicator();
+});
+
+window.addEventListener("message", (event) => {
+    if(event.data && event.data.type != "FORMAT_SYNC") {
+        return;
+    }
+
+    try{
+        isRemoteUpdate = true;
+        editor.innerHTML = event.data.html;
+    } catch (error) {
+        alert("Error updating editor content:" + error);
+    } finally{
+        isRemoteUpdate = false;
+    }
 });
 
 // Update sync status
