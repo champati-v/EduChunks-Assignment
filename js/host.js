@@ -14,7 +14,7 @@ window.addEventListener("message", (event) => {
     }
 
     if(event.source === editorA.contentWindow) {
-        logEvent("Editor A --> B", event.data.message);
+        logEvent("Editor A → B", event.data.message);
         editorB.contentWindow.postMessage(
             event.data,
             TRUSTED_ORIGIN
@@ -22,7 +22,7 @@ window.addEventListener("message", (event) => {
     }
 
     else if(event.source === editorB.contentWindow) {
-        logEvent("Editor B --> A", event.data.message);
+        logEvent("Editor B → A", event.data.message);
         editorA.contentWindow.postMessage(
             event.data,
             TRUSTED_ORIGIN

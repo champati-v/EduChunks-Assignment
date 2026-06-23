@@ -1,21 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="main-container">
-        <iframe id="editorA" src="pages/editor.html"></iframe>
-        <iframe id="editorB" src="pages/editor.html"></iframe>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Iframe Text Sync</title>
+  </head>
+  <body>
+    <header class="page-intro">
+      <h1 class="page-intro__eyebrow">Real-time Editor Sync</h1>
+      <p class="page-intro__subheading">
+        Editors A and B are communicating via the host page using the postMessage API. Try typing in one of the editors and see the changes reflected in the other editor in real-time.
+      </p>
+    </header>
 
-        <div class="log-panel">
-            <h3>Event Log</h3>
+    <div class="main-container">
+      <iframe id="editorA" src="pages/editor-a.html"></iframe>
+      <iframe id="editorB" src="pages/editor-b.html"></iframe>
+
+      <div class="log-panel">
+        <div class="log-panel__header">
+          <div class="log-panel__title">Host Event Log</div>
+          <span class="log-panel__status-dot" aria-hidden="true"></span>
+        </div>
         <div id="eventLog"></div>
+      </div>
     </div>
-    </div>
-</body>
-    <script src="js/host.js"></script>
+  </body>
+  <script src="js/host.js"></script>
 </html>
