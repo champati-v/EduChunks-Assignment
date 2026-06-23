@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rich Text Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="editor-container">
+        <div class="toolbar">
+            <button id="boldBtn" class="toolbar-btn" title="Bold (Ctrl+B)">
+                <strong>B</strong>
+            </button>
+            <button id="italicBtn" class="toolbar-btn" title="Italic (Ctrl+I)">
+                <em>I</em>
+            </button>
+            <button id="strikeBtn" class="toolbar-btn" title="Strikethrough">
+                <s>S</s>
+            </button>
+        </div>
+        <div id="editor" class="editor" contenteditable="true">
+            <p>Start typing here... You can use the buttons above to format your text, or use keyboard shortcuts (Ctrl+B for bold, Ctrl+I for italic).</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
